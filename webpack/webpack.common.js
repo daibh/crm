@@ -75,7 +75,11 @@ module.exports = (options) => ({
             { from: './src/main/webapp/favicon.ico', to: 'favicon.ico' },
             { from: './src/main/webapp/manifest.webapp', to: 'manifest.webapp' },
             // jhipster-needle-add-assets-to-webpack - JHipster will add/remove third-party resources in this array
-            { from: './src/main/webapp/robots.txt', to: 'robots.txt' }
+            { from: './src/main/webapp/robots.txt', to: 'robots.txt' },
+            { from: './node_modules/ngx-admin-lte/public/assets', to: 'assets' }
+            // { from: './node_modules/ngx-admin-lte/src/public/assets/img', to: 'assets/img' },
+            // { from: './src/main/webapp/i18n', to: 'assets/i18n' },
+            // { from: './node_modules/admin-lte/public/assets', to: 'admin-lte' },
         ]),
         new MergeJsonWebpackPlugin({
             output: {
