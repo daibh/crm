@@ -1,0 +1,28 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "nativeLanguage": "vi"
+        },
+        "jhipsterVersion": "5.8.2",
+        "applicationType": "monolith",
+        "baseName": "crm",
+        "clientFramework": "angularX",
+        "useSass": true,
+        "clientPackageManager": "npm",
+        "authenticationType": "jwt",
+        "cacheProvider": "no",
+        "databaseType": "true",
+        "devDatabaseType": "true",
+        "prodDatabaseType": "true",
+        "testFrameworks": [],
+        "jhiPrefix": "ngx",
+        "entitySuffix": "Tbl",
+        "dtoSuffix": "Tbl",
+        "otherModules": [],
+        "enableTranslation": true,
+        "nativeLanguage": "vi",
+        "languages": ["vi"],
+        "skipServer": true,
+        "skipUserManagement": true
+    }
+}
