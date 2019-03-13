@@ -9,11 +9,11 @@ import { JhiLanguageHelper, AccountService, LoginModalService, LoginService } fr
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 
 @Component({
-    selector: 'ngx-navbar',
-    templateUrl: './navbar.component.html',
-    styleUrls: ['navbar.scss']
+    selector: 'ngx-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['header.scss']
 })
-export class NavbarComponent implements OnInit {
+export class HeaderComponent implements OnInit {
     inProduction: boolean;
     isNavbarCollapsed: boolean;
     languages: any[];

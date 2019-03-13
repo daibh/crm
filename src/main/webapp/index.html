@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="vi" dir="ltr">
+
 <head>
     <base href="./" />
     <meta charset="utf-8">
@@ -7,14 +8,29 @@
     <title>crm</title>
     <meta name="description" content="Description for crm">
     <meta name="google" value="notranslate">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no">
     <meta name="theme-color" content="#000000">
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="manifest" href="manifest.webapp" />
-    <link rel="stylesheet" href="content/css/loading.css">
+
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="assets/plugins/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="assets/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. -->
+    <link rel="stylesheet" href="assets/css/skins/_all-skins.min.css">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <link rel="stylesheet" id="loading-splash" href="content/css/loading.css">
     <!-- jhipster-needle-add-resources-to-root - JHipster will add new resources here -->
 </head>
-<body>
+
+<body class="hold-transition skin-blue sidebar-mini">
     <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -22,8 +38,16 @@
         <div class="app-loading">
             <div class="lds-css ng-scope">
                 <div class="lds-pacman">
-                    <div><div></div><div></div><div></div></div>
-                    <div><div></div><div></div><div></div></div>
+                    <div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -33,16 +57,22 @@
                 <h1>An error has occurred :-(</h1>
                 <h2>Usual error causes</h2>
                 <ol>
-                    <li>You started the application from an IDE and you didn't run <code style="color:red">npm start</code> or <code style="color:red">npm run webpack:build</code>.</li>
-                    <li>You had a network error while running <code style="color:red">npm install</code>. If you are behind a corporate proxy, it is likely that this error was caused by your proxy. Have a look at the JHipster error logs, you will probably have the cause of the error.</li>
-                    <li>You installed a Node.js version that doesn't work with JHipster: please use an LTS (long-term support) version, as it's the only version we support.</li>
+                    <li>You started the application from an IDE and you didn't run <code style="color:red">npm start</code>
+                        or <code style="color:red">npm run webpack:build</code>.</li>
+                    <li>You had a network error while running <code style="color:red">npm install</code>. If you are
+                        behind a corporate proxy, it is likely that this error was caused by your proxy. Have a look at
+                        the JHipster error logs, you will probably have the cause of the error.</li>
+                    <li>You installed a Node.js version that doesn't work with JHipster: please use an LTS (long-term
+                        support) version, as it's the only version we support.</li>
                 </ol>
                 <h2>Building the client side code again</h2>
                 <p>If you want to go fast, run <code style="color:red"></code> to build and run everything.</p>
-                <p>If you want to have more control, so you can debug your issue more easily, you should follow the following steps:</p>
+                <p>If you want to have more control, so you can debug your issue more easily, you should follow the
+                    following steps:</p>
                 <ol>
                     <li>Install npm dependencies with the command <code style="color:red">npm install</code></li>
-                    <li>Build the client with the command <code style="color:red">npm run webpack:build</code> or <code style="color:red">npm start</code></li>
+                    <li>Build the client with the command <code style="color:red">npm run webpack:build</code> or <code
+                            style="color:red">npm start</code></li>
                     <li>Start the server with <code style="color:red"></code> or using your IDE</li>
                 </ol>
 
@@ -50,20 +80,25 @@
 
                 <h3>If you have a question on how to use JHipster</h3>
                 <p>
-                    Go to Stack Overflow with the <a href="http://stackoverflow.com/tags/jhipster" target="_blank">"jhipster"</a> tag.
+                    Go to Stack Overflow with the <a href="http://stackoverflow.com/tags/jhipster" target="_blank">"jhipster"</a>
+                    tag.
                 </p>
 
                 <h3>If you have a bug or a feature request</h3>
                 <p>
-                    First read our <a href="https://github.com/jhipster/generator-jhipster/blob/master/CONTRIBUTING.md" target="_blank">contributing guidelines</a>.
+                    First read our <a href="https://github.com/jhipster/generator-jhipster/blob/master/CONTRIBUTING.md"
+                        target="_blank">contributing guidelines</a>.
                 </p>
                 <p>
-                    Then, fill a ticket on our <a href="https://github.com/jhipster/generator-jhipster/issues/new/choose" target="_blank">bug tracker</a>, we'll be happy to resolve your issue!
+                    Then, fill a ticket on our <a href="https://github.com/jhipster/generator-jhipster/issues/new/choose"
+                        target="_blank">bug tracker</a>, we'll be happy to resolve your issue!
                 </p>
 
                 <h3>If you want to chat with contributors and other users</h3>
                 <p>
-                    Join our chat room on <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank">Gitter.im</a>. Please note that this is a public chat room, and that we expect you to respect other people and write in a correct English language!
+                    Join our chat room on <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank">Gitter.im</a>.
+                    Please note that this is a public chat room, and that we expect you to respect other people and
+                    write in a correct English language!
                 </p>
                 <!-- end of troubleshooting content -->
             </div>
@@ -74,15 +109,17 @@
     </noscript>
     <script type="text/javascript" language="javascript">
         // show an error message if the app loading takes more than 5 sec
-        window.onload=function() {
+        window.onload = function () {
             setTimeout(showError, 4000);
         }
+
         function showError() {
             var errorElm = document.getElementById("jhipster-error");
             if (errorElm && errorElm.style) {
                 errorElm.style.display = "block";
             }
         }
+
     </script>
     <!-- uncomment this for adding service worker
         <script>
@@ -106,4 +143,5 @@
         ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>-->
 </body>
+
 </html>

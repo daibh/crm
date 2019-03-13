@@ -79,7 +79,9 @@ library.add(faTrashAlt);
 library.add(faAsterisk);
 
 // jhipster-needle-add-element-to-vendor - JHipster will add new menu items here
-import 'jquery/dist/jquery.min.js';
+
 import '../content/js/declare';
-import 'bootstrap/dist/js/bootstrap.min.js';
-import 'admin-lte/dist/js/app.min.js';
+// import 'bootstrap/dist/js/bootstrap';
+import 'admin-lte/dist/js/adminlte.min.js';
+// import 'admin-lte/dist/js/pages/dashboard.js';
+import 'admin-lte/dist/js/demo.js';

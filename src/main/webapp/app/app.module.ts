@@ -19,7 +19,16 @@ import { CrmAccountModule } from './account/account.module';
 import { CrmEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
-import { NgxMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
+import {
+    NgxMainComponent,
+    HeaderComponent,
+    SidebarComponent,
+    FooterComponent,
+    ControlComponent,
+    PageRibbonComponent,
+    ActiveMenuDirective,
+    ErrorComponent
+} from './layouts';
 
 @NgModule({
     imports: [
@@ -40,7 +49,16 @@ import { NgxMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         CrmEntityModule,
         CrmAppRoutingModule
     ],
-    declarations: [NgxMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+    declarations: [
+        NgxMainComponent,
+        HeaderComponent,
+        SidebarComponent,
+        ErrorComponent,
+        PageRibbonComponent,
+        ActiveMenuDirective,
+        FooterComponent,
+        ControlComponent
+    ],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
