@@ -1,0 +1,57 @@
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../../index2.html"><b>Admin</b>LTE</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+
+    <form (ngSubmit)="login()" #form="ngForm" autocomplete="nope">
+      <div *ngIf="showMessages.error && errors && errors.length > 0 && !submitted" class="alert alert-danger"
+        role="alert">
+        <div>
+          <strong>{{'login.messages.error.title' | translate}}</strong>
+        </div>
+        <div *ngFor="let error of errors">{{ error | translate }}</div>
+      </div>
+      <div *ngIf="showMessages.success && messages && messages.length > 0 && !submitted" class="alert alert-success"
+        role="alert">
+        <div>
+          <strong>{{'login.messages.success.title' | translate}}</strong>
+        </div>
+        <div *ngFor="let message of messages">{{ message | translate }}</div>
+      </div>
+      <div class="form-group has-feedback">
+        <input name="username" [(ngModel)]="username" id="input-username" class="form-control"
+          placeholder="Tên đăng nhập" #usernameCtrl="ngModel"
+          [class.form-control-danger]="usernameCtrl.invalid && usernameCtrl.touched" autofocus [required]="true">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input name="password" [(ngModel)]="password" type="password" id="input-password" class="form-control"
+          placeholder="Mật khẩu" #passwordCtrl="ngModel"
+          [class.form-control-danger]="passwordCtrl.invalid && passwordCtrl.touched" [required]="true">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox" name="rememberMe" [(ngModel)]="rememberMe"> Remember Me
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button [disabled]="submitted || !form.valid" class="btn btn-primary btn-block btn-flat"
+            [class.btn-pulse]="submitted">
+            Sign In </button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+    <!-- /.social-auth-links -->
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->

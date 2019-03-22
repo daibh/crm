@@ -6,6 +6,8 @@ import { Observable, Subject } from 'rxjs';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { Account } from 'app/core/user/account.model';
+import { IMenu, Menu } from 'app/shared/model/menu.model';
+import { toDeepTree } from 'app/shared/util/common-util';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -16,7 +18,11 @@ export class AccountService {
     constructor(private languageService: JhiLanguageService, private sessionStorage: SessionStorageService, private http: HttpClient) {}
 
     fetch(): Observable<HttpResponse<Account>> {
-        return this.http.get<Account>(SERVER_API_URL + 'api/account', { observe: 'response' });
+        return this.http.get<Account>(SERVER_API_URL + 'api/account/getUser', { observe: 'response' });
+    }
+
+    fetchMenu(): Observable<HttpResponse<IMenu[]>> {
+        return this.http.get<IMenu[]>(SERVER_API_URL + 'api/account/GetTblMenuSPs?roleId=2', { observe: 'response' });
     }
 
     save(account: any): Observable<HttpResponse<any>> {
@@ -80,6 +86,16 @@ export class AccountService {
                     // After retrieve the account info, the language will be changed to
                     // the user's preferred language configured in the account setting
                     const langKey = this.sessionStorage.retrieve('locale') || this.userIdentity.langKey;
+                    // Do get menu that be presented
+                    this.fetchMenu().subscribe(res => {
+                        const resMenus = res.body;
+                        const parent = new Menu('CRM', 'CRM', '', null, 0, null, []);
+                        resMenus.push(parent);
+                        const treeMenus = toDeepTree(resMenus)
+                            .filter(x => x.Id === 'CRM')
+                            .pop();
+                        this.userIdentity.menus = treeMenus.Childrens;
+                    });
                     this.languageService.changeLanguage(langKey);
                 } else {
                     this.userIdentity = null;

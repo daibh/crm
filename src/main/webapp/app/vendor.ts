@@ -84,4 +84,4 @@ import '../content/js/declare';
 // import 'bootstrap/dist/js/bootstrap';
 import 'admin-lte/dist/js/adminlte.min.js';
 // import 'admin-lte/dist/js/pages/dashboard.js';
-import 'admin-lte/dist/js/demo.js';
+// import 'admin-lte/dist/js/demo.js';

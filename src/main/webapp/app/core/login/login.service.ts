@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 
 import { AccountService } from 'app/core/auth/account.service';
 import { AuthServerProvider } from 'app/core/auth/auth-jwt.service';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-    constructor(private accountService: AccountService, private authServerProvider: AuthServerProvider) {}
+    constructor(private injector: Injector, private authServerProvider: AuthServerProvider) {}
 
     login(credentials, callback?) {
         const cb = callback || function() {};
@@ -13,7 +13,8 @@ export class LoginService {
         return new Promise((resolve, reject) => {
             this.authServerProvider.login(credentials).subscribe(
                 data => {
-                    this.accountService.identity(true).then(account => {
+                    const accountService = this.injector.get(AccountService);
+                    accountService.identity(true).then(account => {
                         resolve(data);
                     });
                     return cb();
@@ -33,6 +34,7 @@ export class LoginService {
 
     logout() {
         this.authServerProvider.logout().subscribe();
-        this.accountService.authenticate(null);
+        const accountService = this.injector.get(AccountService);
+        accountService.authenticate(null);
     }
 }

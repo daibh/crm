@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="showHealthLabel">
+            {{'user.home.createOrEditLabel' | translate}}
+    </h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button"
+        (click)="close()"><span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form name="updateUserForm" role="form" novalidate (ngSubmit)="onSaveUser($event)" #updateUserForm="ngForm">
+    <div class="modal-body pad">
+        <!-- /.box-header -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group sr-only">
+                    <label for="Id" class="control-label">Id</label>
+                    <input type="text" name="Id" [(ngModel)]="currentUser.Id" class="form-control" id="Id"
+                        placeholder="Id">
+                </div>
+                <div class="form-group">
+                    <label for="UserName" class="control-label">{{'user.UserName' | translate}}</label>
+                    <input type="text" name="UserName" [(ngModel)]="currentUser.UserName" class="form-control"
+                        id="UserName" placeholder="Label" required>
+                </div>
+                <div class="form-group">
+                    <label for="Password" class="control-label">{{'user.Password' | translate}}</label>
+                    <input type="password" name="Password" [(ngModel)]="currentUser.Password" class="form-control"
+                        id="Password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="FullName" class="control-label">{{'user.FullName' | translate}}</label>
+                    <input type="text" name="FullName" [(ngModel)]="currentUser.FullName" class="form-control"
+                        id="FullName" placeholder="FullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="Email" class="control-label">{{'user.Email' | translate}}</label>
+                    <input type="email" class="form-control" name="Email" [(ngModel)]="currentUser.Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="PhoneNumber" class="control-label">{{'user.PhoneNumber' | translate}}</label>
+                    <input type="text" class="form-control" name="PhoneNumber" [(ngModel)]="currentUser.PhoneNumber">
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn bg-orange btn-flat margin">{{'entity.action.save' | translate}}</button>
+        <button class="btn btn-default btn-flat" type="button"
+            (click)="close()">{{'entity.action.close' | translate}}</button>
+    </div>
+</form>

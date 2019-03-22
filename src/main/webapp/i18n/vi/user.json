@@ -1,0 +1,23 @@
+{
+    "user": {
+        "home": {
+            "title": "Quản lý tài khoản",
+            "createLabel": "Tạo mới",
+            "createOrEditLabel": "Tạo hoặc sửa tài khoản"
+        },
+        "created": "Tài khoản mới đã được tạo thành công.",
+        "updated": "Tài khoản đã được cập nhật thành công.",
+        "deleted": "Tài khoản đã bị xóa thành công.",
+        "delete": {
+            "question": "Bạn có chắc chắn muốn xóa tài khoản này?"
+        },
+        "detail": {
+            "title": "Thông tin tài khoản"
+        },
+        "UserName": "Tên đăng nhập",
+        "Password": "Mật khẩu",
+        "FullName": "Họ tên",
+        "Email": "Email",
+        "PhoneNumber": "Số điện thoại"
+    }
+}

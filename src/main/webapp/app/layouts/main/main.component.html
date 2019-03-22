@@ -1,27 +1,21 @@
-<ngx-page-ribbon></ngx-page-ribbon>
-<!-- Header. -->
-<div>
-    <router-outlet name="header"></router-outlet>
+<!-- <ngx-page-ribbon></ngx-page-ribbon> -->
+<div class="wrapper" id="wrapper">
+    <!-- Header. -->
+    <router-outlet name="header" *ngIf="isAuthenticated"></router-outlet>
+    <!-- /.Header -->
+    <!-- Left side column. contains the logo and sidebar -->
+    <router-outlet name="sidebar" *ngIf="isAuthenticated"></router-outlet>
+    <!-- /.Left side column -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" id="content-wrapper">
+        <router-outlet></router-outlet>
+        <router-outlet name="popup"></router-outlet>
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Footer -->
+    <router-outlet name="footer" *ngIf="isAuthenticated"></router-outlet>
+    <!-- /.Footer -->
+    <!-- Control Sidebar -->
+    <router-outlet name="control" *ngIf="isAuthenticated"></router-outlet>
+    <!-- /.control-sidebar -->
 </div>
-<!-- /.Header -->
-<!-- Left side column. contains the logo and sidebar -->
-<div>
-    <router-outlet name="sidebar"></router-outlet>
-</div>
-<!-- /.Left side column -->
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <router-outlet></router-outlet>
-    <router-outlet name="popup"></router-outlet>
-</div>
-<!-- /.content-wrapper -->
-<!-- Footer -->
-<div>
-    <router-outlet name="footer"></router-outlet>
-</div>
-<!-- /.Footer -->
-<!-- Control Sidebar -->
-<div>
-    <router-outlet name="control"></router-outlet>
-</div>
-<!-- /.control-sidebar -->

@@ -15,8 +15,7 @@ import { CrmSharedModule } from 'app/shared';
 import { CrmCoreModule } from 'app/core';
 import { CrmAppRoutingModule } from './app-routing.module';
 import { CrmHomeModule } from './home/home.module';
-import { CrmAccountModule } from './account/account.module';
-import { CrmEntityModule } from './entities/entity.module';
+import { CrmComponentModule } from './components/component.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import {
@@ -44,9 +43,8 @@ import {
         CrmSharedModule.forRoot(),
         CrmCoreModule,
         CrmHomeModule,
-        CrmAccountModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
-        CrmEntityModule,
+        CrmComponentModule,
         CrmAppRoutingModule
     ],
     declarations: [

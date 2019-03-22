@@ -24,7 +24,7 @@ export class UserRouteAccessService implements CanActivate {
 
     checkLogin(authorities: string[], url: string): Promise<boolean> {
         return this.accountService.identity().then(account => {
-            if (!authorities || authorities.length === 0) {
+            if (!authorities || (authorities.length === 0 && account)) {
                 return true;
             }
 
@@ -36,16 +36,15 @@ export class UserRouteAccessService implements CanActivate {
                 if (isDevMode()) {
                     console.error('User has not any of required authorities: ', authorities);
                 }
-                return false;
-            }
-
-            this.stateStorageService.storeUrl(url);
-            this.router.navigate(['accessdenied']).then(() => {
-                // only show the login dialog, if the user hasn't logged in yet
-                if (!account) {
+                this.stateStorageService.storeUrl(url);
+                this.router.navigate(['accessdenied']).then(() => {
+                    // only show the login dialog, if the user hasn't logged in yet
                     this.loginModalService.open();
-                }
-            });
+                });
+                return false;
+            } else {
+                this.router.navigate(['auth', 'login']);
+            }
             return false;
         });
     }

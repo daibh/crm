@@ -3,7 +3,6 @@
 /* ==============================================================
 Bootstrap tweaks
 ===============================================================*/
-
 body,
 h1,
 h2,
@@ -224,10 +223,104 @@ ui bootstrap tweaks
 }
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+.wrapper {
+    overflow: hidden;
+}
+
 .modal-open {
     .modal {
         &.fade {
             opacity: 1;
+            &.show {
+                > .modal-dialog {
+                    transform: translate(0, 0);
+                    > .modal-content {
+                        > .modal-header {
+                            > .modal-title {
+                                display: inline-flex;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.login-page {
+    .wrapper {
+        background: transparent;
+        .content-wrapper {
+            margin: 0 auto;
+            background: transparent;
+        }
+    }
+}
+
+.skin-blue {
+    .wrapper {
+        background-color: #2b3334;
+        .main-header {
+            .logo {
+                background-color: #2b3334;
+                &:hover {
+                    background-color: #2b3334;
+                }
+            }
+        }
+        .main-sidebar {
+            background-color: #2b3334;
+            .sidebar-menu {
+                > li {
+                    background-color: #414849;
+                    margin-top: 2px;
+                    &:hover,
+                    &.active,
+                    &.menu-open {
+                        a {
+                            background-color: #414849;
+                        }
+                    }
+                    > .treeview-menu {
+                        background: transparent;
+                        > li {
+                            a {
+                                color: #aaadae;
+                                margin-top: 0;
+                            }
+                            &.active,
+                            &:hover {
+                                a {
+                                    color: #fd6c37;
+                                }
+                            }
+                        }
+                    }
+                    &.active {
+                        > .treeview-menu {
+                            border-left: 2px solid #3c8dbc;
+                        }
+                    }
+                }
+            }
+        }
+        .left-side {
+            background-color: #2b3334;
+        }
+    }
+    &.sidebar-collapse {
+        .wrapper {
+            .main-sidebar {
+                .sidebar-menu {
+                    > li {
+                        > .treeview-menu {
+                            border-left: 0.5px solid #2b3334;
+                            padding: 0;
+                            border-top: 2px solid #2b3334;
+                        }
+                    }
+                }
+            }
         }
     }
 }

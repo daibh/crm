@@ -10,6 +10,10 @@ const LAYOUT_ROUTES = [headerRoute, sidebarRoute, footerRoute, controlRoute, ...
         RouterModule.forRoot(
             [
                 {
+                    path: 'auth',
+                    loadChildren: './auth/auth.module#CrmAuthModule'
+                },
+                {
                     path: 'admin',
                     loadChildren: './admin/admin.module#CrmAdminModule'
                 },

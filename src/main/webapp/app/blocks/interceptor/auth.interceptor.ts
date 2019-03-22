@@ -13,7 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
         if (!request || !request.url || (/^http/.test(request.url) && !(SERVER_API_URL && request.url.startsWith(SERVER_API_URL)))) {
             return next.handle(request);
         }
-
+        console.log('----------');
         const token = this.localStorage.retrieve('authenticationToken') || this.sessionStorage.retrieve('authenticationToken');
         if (!!token) {
             request = request.clone({

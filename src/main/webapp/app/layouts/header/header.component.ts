@@ -7,6 +7,7 @@ import { SessionStorageService } from 'ngx-webstorage';
 import { VERSION } from 'app/app.constants';
 import { JhiLanguageHelper, AccountService, LoginModalService, LoginService } from 'app/core';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
+import { showProperty } from 'app/shared/util/common-util';
 
 @Component({
     selector: 'ngx-header',
@@ -20,6 +21,8 @@ export class HeaderComponent implements OnInit {
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    account: any;
+    showProperty;
 
     constructor(
         private loginService: LoginService,
@@ -33,6 +36,7 @@ export class HeaderComponent implements OnInit {
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
+        this.showProperty = showProperty;
     }
 
     ngOnInit() {
@@ -40,10 +44,12 @@ export class HeaderComponent implements OnInit {
             this.languages = languages;
         });
 
-        this.profileService.getProfileInfo().then(profileInfo => {
-            this.inProduction = profileInfo.inProduction;
-            this.swaggerEnabled = profileInfo.swaggerEnabled;
-        });
+        // this.profileService.getProfileInfo().then(profileInfo => {
+        //     this.inProduction = profileInfo.inProduction;
+        //     this.swaggerEnabled = profileInfo.swaggerEnabled;
+        // });
+
+        this.accountService.identity().then(account => (this.account = account));
     }
 
     changeLanguage(languageKey: string) {
@@ -66,7 +72,7 @@ export class HeaderComponent implements OnInit {
     logout() {
         this.collapseNavbar();
         this.loginService.logout();
-        this.router.navigate(['']);
+        this.router.navigate(['auth', 'login']);
     }
 
     toggleNavbar() {

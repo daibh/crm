@@ -1,0 +1,176 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Widget Management
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Widget</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <!-- column -->
+        <div class="col-md-12">
+
+            <!-- SELECT2 EXAMPLE -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Add New Element</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                class="fa fa-remove"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <form name="addAttributeForm" role="form" novalidate (ngSubmit)="addComponent()"
+                    #addAttributeForm="ngForm">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="attrId" class="control-label">Id</label>
+                                    <input type="text" name="attrId" [(ngModel)]="newAttribute.AttributesId"
+                                        class="form-control" id="attrId" placeholder="Id">
+                                </div>
+                                <div class="form-group">
+                                    <label for="attrLabel" class="control-label">Label</label>
+                                    <input type="text" name="attrLabel" [(ngModel)]="newAttribute.AttributeLabel"
+                                        class="form-control" id="attrLabel" placeholder="Label">
+                                </div>
+                                <div class="form-group">
+                                    <label for="attrClass" class="control-label">Class</label>
+                                    <input type="text" name="attrClass" [(ngModel)]="newAttribute.AttributeClass"
+                                        class="form-control" id="attrClass" placeholder="Class">
+                                </div>
+                                <div class="form-group">
+                                    <label for="attrPrefixIcon" class="control-label">Prefix icon</label>
+                                    <input type="text" name="attrPrefixIcon" [(ngModel)]="newAttribute.PrefixIcon"
+                                        class="form-control" id="attrPrefixIcon" placeholder="Prefix icon">
+                                </div>
+                                <!-- checkbox -->
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" class="minimal" name="attrPrefixSubfixIcon"
+                                            [(ngModel)]="newAttribute.IsPrefixSubfixIcon">
+                                        Use prefix and subfix icon
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="attrCode" class="control-label">Name</label>
+                                    <input type="text" name="attrCode" [(ngModel)]="newAttribute.AttributeCode"
+                                        class="form-control" id="attrCode" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="attrType" class="control-label">Type</label>
+                                    <select class="form-control select2" name="attrType"
+                                        [(ngModel)]="newAttribute.AttributeType" data-placeholder="Select a State"
+                                        style="width: 100%;">
+                                        <option [value]="'text'">Text</option>
+                                        <option [value]="'email'">Email</option>
+                                        <option [value]="'password'">Password</option>
+                                        <option [value]="'select'">Dropdown</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="attrDefaultValue" class="control-label">Default value</label>
+                                    <input type="text" name="attrDefaultValue" [(ngModel)]="newAttribute.DefaultValue"
+                                        class="form-control" id="attrDefaultValue" placeholder="Default value">
+                                </div>
+                                <div class="form-group">
+                                    <label for="attrSubfixIcon" class="control-label">Subfix icon</label>
+                                    <input type="text" name="attrSubfixIcon" [(ngModel)]="newAttribute.SubfixIcon"
+                                        class="form-control" id="attrSubfixIcon" placeholder="Subfix icon">
+                                </div>
+                                <!-- checkbox -->
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" class="minimal" name="attrRequired"
+                                            [(ngModel)]="newAttribute.IsRequired">
+                                        Is required
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-info pull-right">Add now</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Quick Example On Dynamic Element</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form name="exAttributeForm" role="form" novalidate (ngSubmit)="save()" #exAttributeForm="ngForm">
+                    <div class="box-body">
+                        <div class="form-group" *ngFor="let item of attributes">
+                            <label for="{{item.AttributesId}}">{{ item.AttributeLabel }}</label>
+                            <div class="input-group" *ngIf="hasPrefixOrSubfix(item)">
+                                <span *ngIf="hasPrefix(item)" class="input-group-addon"><i
+                                        class="{{item.IsPrefixSubfixIcon ? item.PrefixIcon : ''}}">{{item.IsPrefixSubfixIcon ? '' : item.PrefixIcon}}</i></span>
+                                <input [id]="item.AttributesId" [name]="item.AttributeCode"
+                                    [(ngModel)]="item.DefaultValue" [type]="item.AttributeType"
+                                    [class]="item.AttributeClass" [placeholder]="item.AttributeLabel"
+                                    [required]="item.IsRequired" [hidden]="!item.IsVisible">
+                                <span *ngIf="hasSubfix(item)" class="input-group-addon"><i
+                                        class="{{item.IsPrefixSubfixIcon ? item.SubfixIcon : ''}}">{{item.IsPrefixSubfixIcon ? '' : item.SubfixIcon}}</i></span>
+                            </div>
+                            <input *ngIf="!hasPrefixOrSubfix(item)" [id]="item.AttributesId" [name]="item.AttributeCode"
+                                [(ngModel)]="item.DefaultValue" [type]="item.AttributeType"
+                                [class]="item.AttributeClass" [placeholder]="item.AttributeLabel"
+                                [required]="item.IsRequired" [hidden]="!item.IsVisible">
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Quick View Result Of Example On Dynamic Element</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group" *ngFor="let item of attributes">
+                            <label class="col-sm-2 control-label">{{ item.AttributeLabel }}</label>
+                            <div class="col-sm-10">
+                                <input type="text" [readonly]="true" [value]="item.DefaultValue" class="form-control"
+                                    [name]="item.AttributeCode" [placeholder]="item.AttributeLabel">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-footer -->
+                </form>
+            </div>
+            <!-- /.box -->
+
+        </div>
+        <!--/.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

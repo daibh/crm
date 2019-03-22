@@ -19,4 +19,6 @@ export * from './logs/log.model';
 export * from './metrics/metrics.component';
 export * from './metrics/metrics.service';
 export * from './metrics/metrics.route';
+export * from './user/user.component';
+export * from './user/user.route';
 export * from './admin.route';

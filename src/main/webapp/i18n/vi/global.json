@@ -92,10 +92,11 @@
             "addimage": "Thêm ảnh",
             "back": "Quay lại",
             "cancel": "Hủy",
+            "close": "Đóng",
             "delete": "Xóa",
             "edit": "Sửa",
             "open": "Mở",
-            "save": "Lưu",
+            "save": "Lưu lại",
             "view": "Xem"
         },
         "detail": {
@@ -116,6 +117,12 @@
             "pattern": "Trường này phải theo định dạng {{ pattern }}.",
             "number": "Trường này phải là một số.",
             "datetimelocal": "Trường này phải là định dạng thời gian."
+        },
+        "log": {
+            "createdBy": "Người tạo",
+            "createdDate": "Ngày tạo",
+            "UpdateBy": "Người sửa",
+            "UpdateDate": "Ngày sửa"
         }
     },
     "error": {

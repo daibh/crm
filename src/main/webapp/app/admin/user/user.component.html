@@ -1,0 +1,70 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+      {{'user.home.title' | translate}}
+    <small>Preview</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> {{'global.menu.home' | translate}}</a></li>
+    <li class="active">{{'user.home.title' | translate}}</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <!-- column -->
+    <div class="col-md-12">
+
+      <!-- SELECT2 EXAMPLE -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">&nbsp;</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool btn-flat btn-microsoft" (click)="onClickAddNew($event)"><i
+                class="fa fa-plus"></i> {{'user.home.createLabel' | translate}}</button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <form name="addAttributeForm" role="form" novalidate (ngSubmit)="addComponent()" #addAttributeForm="ngForm">
+          <div class="box-body">
+            <ngx-alert></ngx-alert>
+            <table class="table table-striped">
+              <tr>
+                <th style="width: 10px">#</th>
+                <th>{{'user.UserName' | translate}}</th>
+                <th>{{'user.FullName' | translate}}</th>
+                <th>{{'user.Email' | translate}}</th>
+                <th>{{'user.PhoneNumber' | translate}}</th>
+                <th></th>
+              </tr>
+              <tr *ngFor="let user of users; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{user.UserName}}</td>
+                <td>{{user.FullName}}</td>
+                <td>{{user.Email}}</td>
+                <td>{{user.PhoneNumber}}</td>
+                <td>
+                  <div>
+                    <button type="button" class="btn btn-sm btn-flat btn-success" (click)="onClickEdit($event, user)"><i
+                        class="fa fa-pencil"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+            </table>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+
+    </div>
+    <!--/.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->

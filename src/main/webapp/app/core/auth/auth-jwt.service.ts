@@ -20,14 +20,22 @@ export class AuthServerProvider {
             password: credentials.password,
             rememberMe: credentials.rememberMe
         };
-        return this.http.post(SERVER_API_URL + 'api/authenticate', data, { observe: 'response' }).pipe(map(authenticateSuccess.bind(this)));
+        return this.http
+            .post(SERVER_API_URL + 'api/account/login', data, { observe: 'response' })
+            .pipe(map(authenticateSuccess.bind(this)));
 
         function authenticateSuccess(resp) {
-            const bearerToken = resp.headers.get('Authorization');
+            // const bearerToken = resp.headers.get('Authorization');
+            console.log('respone', resp.body);
+            const bearerToken = resp.body.token;
+            console.log(bearerToken);
             if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
                 const jwt = bearerToken.slice(7, bearerToken.length);
                 this.storeAuthenticationToken(jwt, credentials.rememberMe);
                 return jwt;
+            } else {
+                this.storeAuthenticationToken(bearerToken, credentials.rememberMe);
+                return bearerToken;
             }
         }
     }

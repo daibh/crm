@@ -15,6 +15,8 @@ import {
     NgxConfigurationComponent,
     NgxDocsComponent
 } from './';
+import { UserComponent } from './user/user.component';
+import { UserModalComponent } from './user/user-modal.component';
 
 @NgModule({
     imports: [
@@ -29,10 +31,12 @@ import {
         NgxHealthCheckComponent,
         NgxHealthModalComponent,
         NgxDocsComponent,
-        NgxMetricsMonitoringComponent
+        NgxMetricsMonitoringComponent,
+        UserComponent,
+        UserModalComponent
     ],
     providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
-    entryComponents: [NgxHealthModalComponent],
+    entryComponents: [NgxHealthModalComponent, UserModalComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CrmAdminModule {
